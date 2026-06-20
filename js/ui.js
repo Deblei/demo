@@ -76,7 +76,7 @@ const UI = {
   },
 
   _colorFor(type) {
-    return {villa:'#1B5E20',appartement:'#0D47A1',duplex:'#BF360C',studio:'#4A148C',bureau:'#004D40'}[type] || '#1C3A2E';
+    return {villa:'#042C53',appartement:'#0C447C',duplex:'#185FA5',studio:'#0A1628',bureau:'#1E3A5F'}[type] || '#042C53';
   },
 
   // ── Status pill ─────────────────────────────
