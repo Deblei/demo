@@ -11,7 +11,7 @@ const Canvas3D = {
     canvas.height = canvas.offsetHeight || 280;
     const W = canvas.width, H = canvas.height;
     let frame = 0;
-    const [br, bg, bb] = this._hex2rgb(colorHex || '#1C3A2E');
+    const [br, bg, bb] = this._hex2rgb(colorHex || '#042C53');
 
     const draw = () => {
       ctx.clearRect(0, 0, W, H);
@@ -72,7 +72,7 @@ const Canvas3D = {
       dragging: false, lastX: 0, lastY: 0,
       room: 0, lightMode: 'day', topView: false,
       frame: 0, autoAnim: null,
-      color: bien?.color || '#1C3A2E'
+      color: bien?.color || '#042C53'
     };
 
     const rooms = ['Salon', 'Chambre', 'Cuisine', 'Salle de bain', 'Terrasse'];
