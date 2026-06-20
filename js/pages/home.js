@@ -44,10 +44,11 @@ const PageHome = {
       <div class="container">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
           <!-- Carte visiteur -->
-          <div style="background:var(--off-white);border:1.5px solid var(--gris-6);border-radius:20px;padding:36px;cursor:pointer;transition:all .25s" onmouseenter="this.style.borderColor='var(--bleu-4)';this.style.boxShadow='0 8px 32px rgba(55,138,221,.12)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='var(--gris-6)';this.style.boxShadow='';this.style.transform=''" onclick="App.goPage('catalogue')">
-            <div style="width:56px;height:56px;background:var(--bleu-7);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:18px">🏠</div>
-            <h3 style="margin-bottom:10px">Je cherche un bien</h3>
-            <p style="font-size:.9rem;margin-bottom:24px">Explorez des centaines de biens en visite 3D immersive. Filtrez, comparez, contactez l'agent en direct.</p>
+          <div style="background:linear-gradient(135deg,#0A1E3D 0%,#0D2A52 100%);border:1.5px solid rgba(55,138,221,.2);border-radius:20px;padding:36px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(55,138,221,.5)';this.style.boxShadow='0 8px 32px rgba(55,138,221,.2)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='rgba(55,138,221,.2)';this.style.boxShadow='';this.style.transform=''" onclick="App.goPage('catalogue')">
+            <div style="position:absolute;top:-40px;left:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(55,138,221,.1) 0%,transparent 70%)"></div>
+            <div style="width:56px;height:56px;background:rgba(55,138,221,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:18px;border:1px solid rgba(55,138,221,.3)">🏠</div>
+            <h3 style="color:#fff;margin-bottom:10px">Je cherche un bien</h3>
+            <p style="color:rgba(255,255,255,.65);font-size:.9rem;margin-bottom:24px">Explorez des centaines de biens en visite 3D immersive. Filtrez, comparez, contactez l'agent en direct.</p>
             <button class="btn btn-primary">Voir le catalogue →</button>
           </div>
           <!-- Carte agent -->
@@ -149,7 +150,12 @@ const PageHome = {
 
     setTimeout(() => {
       Canvas3D.initMini('hero-canvas', '#042C53');
-      Canvas3D.initMini('hero-preview-canvas', '#042C53');
+      const heroCanvas = document.getElementById('hero-preview-canvas');
+      if (heroCanvas) {
+        heroCanvas.width = heroCanvas.parentElement.clientWidth;
+        heroCanvas.height = heroCanvas.parentElement.clientHeight;
+        Canvas3D.initViewer('hero-preview-canvas', {type:'villa',color:'#042C53'});
+      }
     }, 50);
 
     try {
