@@ -694,3 +694,194 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   .specs-row { grid-template-columns: 1fr 1fr; }
   .hero-stats { gap: 20px; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE FIRST — Corrections complètes iPhone
+═══════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* ── Hero ── */
+  .hero { padding-top: var(--nav-h); min-height: 100svh; }
+  .hero .container > div { grid-template-columns: 1fr !important; gap: 24px !important; padding-top: 32px !important; padding-bottom: 48px !important; }
+  .hero h1 { font-size: 2.4rem !important; }
+  .hero-sub { font-size: .95rem !important; }
+  .hero-ctas { flex-direction: column !important; gap: 10px !important; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+  .hero-stats { gap: 20px !important; margin-top: 28px !important; }
+  .hero-stat-val { font-size: 1.4rem !important; }
+  .hero-3d-preview { display: none !important; }
+
+  /* ── Search bar ── */
+  .search-bar {
+    flex-direction: column !important;
+    border-radius: var(--r-lg) !important;
+    overflow: hidden;
+    margin-top: 24px !important;
+  }
+  .search-bar select,
+  .search-bar input {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,.1) !important;
+    padding: 13px 16px !important;
+    width: 100% !important;
+    color: rgba(255,255,255,.9) !important;
+  }
+  .search-bar .btn {
+    border-radius: 0 !important;
+    padding: 14px !important;
+    justify-content: center;
+  }
+
+  /* ── CTA cards ── */
+  .section > .container > div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Section padding ── */
+  .section { padding: 48px 0 !important; }
+  .container { padding: 0 16px !important; }
+
+  /* ── Prop cards ── */
+  .prop-grid, .cat-prop-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* ── HIW grid ── */
+  .hiw-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+
+  /* ── Testimonials ── */
+  .testi-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+  /* ── Agent CTA ── */
+  .agent-cta {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 36px 20px !important;
+    gap: 24px !important;
+  }
+  .agent-cta .btn-cyan { width: 100%; justify-content: center; }
+
+  /* ── Footer ── */
+  .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* ── Dashboard sidebar → tabs horizontaux ── */
+  .dashboard-layout { flex-direction: column !important; }
+  .dash-sidebar {
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 10px 12px !important;
+    gap: 6px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .dash-sidebar::-webkit-scrollbar { display: none; }
+  .dash-user { display: none !important; }
+  .dash-nav-item {
+    flex-shrink: 0 !important;
+    padding: 8px 14px !important;
+    font-size: .8rem !important;
+    white-space: nowrap !important;
+    border-left: none !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: var(--r-sm) !important;
+  }
+  .dash-nav-item.active {
+    border-left: none !important;
+    border-bottom: 2px solid var(--bleu-4) !important;
+  }
+  .dash-main { padding: 16px 12px !important; }
+
+  /* ── Dashboard bien-row ── */
+  .bien-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  .bien-row > div:last-child {
+    width: 100% !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+  .bien-row-title { white-space: normal !important; font-size: .88rem !important; }
+
+  /* ── KPI grid ── */
+  .kpi-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+  .kpi-val { font-size: 1.6rem !important; }
+  .kpi-card { padding: 14px !important; }
+
+  /* ── Quick actions ── */
+  .quick-actions { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+
+  /* ── Tarifs ── */
+  .tarifs-grid { grid-template-columns: 1fr !important; }
+
+  /* ── Fiche bien ── */
+  .fiche-layout {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 16px !important;
+  }
+  .fiche-sidebar { position: static !important; }
+  #viewer-wrap { height: 320px !important; }
+  .viewer-rooms { display: none !important; }
+
+  /* Boutons de pièces en horizontal scrollable */
+  #rooms-bar {
+    padding-bottom: 12px;
+  }
+  .room-nav-btn {
+    padding: 6px 12px !important;
+    font-size: .72rem !important;
+  }
+  .viewer-controls {
+    top: 8px !important; right: 8px !important;
+    gap: 4px !important;
+  }
+  .v-btn { width: 30px !important; height: 30px !important; font-size: .85rem !important; }
+
+  /* ── Specs ── */
+  .specs-row { grid-template-columns: 1fr 1fr !important; }
+
+  /* ── Auth modal ── */
+  .modal { border-radius: var(--r-lg) !important; }
+  .form-grid-2 { grid-template-columns: 1fr !important; }
+
+  /* ── Scan page ── */
+  .scan-mode-tabs { flex-direction: column !important; gap: 8px !important; }
+  .scan-cta-grid { grid-template-columns: 1fr !important; }
+
+  /* ── Publish stepper ── */
+  .step-lbl { display: none !important; }
+  .step-line { margin: 0 4px !important; }
+  .pub-card { padding: 20px 14px !important; }
+  .equip-grid { gap: 6px !important; }
+
+  /* ── Navbar mobile ── */
+  #navbar .btn-outline { display: none; }
+  .nav-burger { display: flex !important; }
+  .nav-links { display: none !important; }
+
+  /* ── Breadcrumb ── */
+  .breadcrumb { font-size: .75rem !important; flex-wrap: wrap !important; }
+
+  /* ── Section headers ── */
+  .section-header { margin-bottom: 32px !important; }
+  h2 { font-size: 1.6rem !important; }
+  h1 { font-size: 2rem !important; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2rem !important; }
+  .kpi-grid { grid-template-columns: 1fr !important; }
+  .dash-main { padding: 12px 10px !important; }
+  #viewer-wrap { height: 260px !important; }
+  .specs-row { grid-template-columns: repeat(2, 1fr) !important; }
+  .prop-price { font-size: 1rem !important; }
+}
