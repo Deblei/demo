@@ -5,7 +5,7 @@ const PageHome = {
     <section class="hero">
       <div class="hero-canvas-bg"><canvas id="hero-canvas"></canvas></div>
       <div class="container" style="padding-top:40px;padding-bottom:80px">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+        <div class="hero-grid">
           <div>
             <div class="pill pill-cyan" style="margin-bottom:20px;font-size:.78rem">🏆 Plateforme N°1 de visite 3D en Côte d'Ivoire</div>
             <h1>Visitez depuis<br>votre salon,<br><em>comme si<br>vous y étiez.</em></h1>
@@ -42,7 +42,7 @@ const PageHome = {
     <!-- CTA cards -->
     <section class="section">
       <div class="container">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+        <div class="cta-grid">
           <!-- Carte visiteur -->
           <div style="background:linear-gradient(135deg,#0A1E3D 0%,#0D2A52 100%);border:1.5px solid rgba(55,138,221,.2);border-radius:20px;padding:36px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(55,138,221,.5)';this.style.boxShadow='0 8px 32px rgba(55,138,221,.2)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='rgba(55,138,221,.2)';this.style.boxShadow='';this.style.transform=''" onclick="App.goPage('catalogue')">
             <div style="position:absolute;top:-40px;left:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(55,138,221,.1) 0%,transparent 70%)"></div>
