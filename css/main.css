@@ -885,3 +885,26 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   .specs-row { grid-template-columns: repeat(2, 1fr) !important; }
   .prop-price { font-size: 1rem !important; }
 }
+
+/* ── Grids responsives (pas de styles inline) ── */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .cta-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
