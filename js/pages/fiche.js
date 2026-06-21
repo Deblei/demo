@@ -63,20 +63,20 @@ const PageFiche = {
 
             <!-- Contrôles -->
             <div style="position:absolute;top:16px;right:16px;display:flex;flex-direction:column;gap:6px">
-              <button class="v-btn" onclick="Canvas3D.rotateLeft(PageFiche.viewerState)" title="Rotation gauche">◀</button>
-              <button class="v-btn" onclick="Canvas3D.zoomIn(PageFiche.viewerState)" title="Zoom +">+</button>
-              <button class="v-btn" onclick="Canvas3D.toggleTop(PageFiche.viewerState)" title="Vue plan">⊞</button>
-              <button class="v-btn" onclick="Canvas3D.zoomOut(PageFiche.viewerState)" title="Zoom -">−</button>
-              <button class="v-btn" onclick="Canvas3D.rotateRight(PageFiche.viewerState)" title="Rotation droite">▶</button>
-              <button class="v-btn" id="light-btn" onclick="PageFiche.toggleLight()" title="Lumière">☀️</button>
-              <button class="v-btn" onclick="PageFiche.toggleFullscreen()" title="Plein écran">⛶</button>
+              <button class="v-btn" onclick="Viewer3D.rotateLeft()" title="Rotation gauche">◀</button>
+              <button class="v-btn" onclick="Viewer3D.zoomIn()" title="Zoom +">+</button>
+              <button class="v-btn" onclick="Viewer3D.goToRoom(Viewer3D.currentRoom)" title="Vue plan">⊞</button>
+              <button class="v-btn" onclick="Viewer3D.zoomOut()" title="Zoom -">−</button>
+              <button class="v-btn" onclick="Viewer3D.rotateRight()" title="Rotation droite">▶</button>
+              <button class="v-btn" id="light-btn" onclick="Viewer3D.toggleLight()" title="Lumière">☀️</button>
+              <button class="v-btn" onclick="Viewer3D.toggleFullscreen('viewer-wrap')" title="Plein écran">⛶</button>
             </div>
 
             <!-- Navigation pièces en bas -->
             <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(4,44,83,.95));padding:28px 16px 16px">
               <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none" id="rooms-bar">
                 ${this.rooms.map((r,i)=>`
-                <button onclick="PageFiche.switchRoom(${i})" id="room-btn-${i}" style="flex-shrink:0;padding:8px 16px;border-radius:99px;border:1.5px solid ${i===0?'rgba(0,212,255,.8)':'rgba(255,255,255,.2)'};background:${i===0?'rgba(0,212,255,.2)':'rgba(4,44,83,.6)'};color:${i===0?'#00D4FF':'rgba(255,255,255,.75)'};font-size:.8rem;font-weight:600;cursor:pointer;backdrop-filter:blur(8px);transition:all .2s;white-space:nowrap">
+                <button onclick="Viewer3D.goToRoom(${i})" id="room-btn-${i}" class="room-nav-btn" style="flex-shrink:0;padding:8px 16px;border-radius:99px;border:1.5px solid ${i===0?'rgba(0,212,255,.8)':'rgba(255,255,255,.2)'};background:${i===0?'rgba(0,212,255,.2)':'rgba(4,44,83,.6)'};color:${i===0?'#00D4FF':'rgba(255,255,255,.75)'};font-size:.8rem;font-weight:600;cursor:pointer;backdrop-filter:blur(8px);transition:all .2s;white-space:nowrap">
                   ${r}
                 </button>`).join('')}
               </div>
@@ -178,24 +178,25 @@ const PageFiche = {
     </div>
     </div>`;
 
-    // Init viewer 3D
-    setTimeout(() => {
-      const canvas = document.getElementById('fiche-canvas');
+    // Init viewer 3D Three.js
+    setTimeout(async () => {
       const wrap = document.getElementById('viewer-wrap');
-      if (!canvas || !wrap) return;
-      canvas.width = wrap.clientWidth;
-      canvas.height = wrap.clientHeight;
-      this.viewerState = Canvas3D.initViewer('fiche-canvas', b);
-
-      // Masquer le hint au premier drag
-      canvas.addEventListener('mousedown', () => {
-        const hint = document.getElementById('viewer-hint');
-        if (hint) { hint.style.opacity = '0'; setTimeout(()=>hint.style.display='none',500); }
-      }, {once:true});
-      canvas.addEventListener('touchstart', () => {
-        const hint = document.getElementById('viewer-hint');
-        if (hint) { hint.style.opacity = '0'; setTimeout(()=>hint.style.display='none',500); }
-      }, {once:true});
+      if (!wrap) return;
+      // Nettoyer le canvas de base
+      const oldCanvas = document.getElementById('fiche-canvas');
+      if (oldCanvas) oldCanvas.remove();
+      // Lancer Viewer3D
+      await Viewer3D.init('viewer-wrap', b);
+      // Masquer le hint au premier interaction
+      const hint = document.getElementById('viewer-hint');
+      if (hint) {
+        wrap.addEventListener('mousedown', () => {
+          hint.style.opacity='0'; setTimeout(()=>hint.style.display='none',500);
+        }, {once:true});
+        wrap.addEventListener('touchstart', () => {
+          hint.style.opacity='0'; setTimeout(()=>hint.style.display='none',500);
+        }, {once:true});
+      }
     }, 100);
 
     // Biens similaires
