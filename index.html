@@ -10,9 +10,12 @@
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav id="navbar"></nav>
+<!-- MOBILE DRAWER -->
 <div id="nav-drawer"></div>
 
+<!-- PAGES -->
 <main id="app">
   <div id="page-home"              class="page"></div>
   <div id="page-catalogue"         class="page"></div>
@@ -23,14 +26,18 @@
   <div id="page-scan"              class="page"></div>
 </main>
 
+<!-- FOOTER -->
 <footer id="footer"></footer>
 
+<!-- AUTH MODAL -->
 <div id="auth-backdrop" class="modal-backdrop">
   <div class="modal" id="auth-modal"></div>
 </div>
 
+<!-- TOAST -->
 <div id="toast-container"></div>
 
+<!-- LOADING OVERLAY -->
 <div id="loading-overlay" class="hidden">
   <div class="loading-spinner">
     <div class="spin"></div>
@@ -38,6 +45,8 @@
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="./js/viewer3d.js"></script>
 <script src="./js/api.js"></script>
 <script src="./js/canvas3d.js"></script>
 <script src="./js/ui.js"></script>
