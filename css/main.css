@@ -966,3 +966,37 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     justify-content: flex-start !important;
   }
 }
+
+/* ── Sidebar labels cachés sur mobile ── */
+@media (max-width: 768px) {
+  .dash-nav-label { display: none; }
+  .dash-sidebar {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    height: auto !important;
+    padding: 8px !important;
+    gap: 4px !important;
+    width: 100% !important;
+    position: static !important;
+  }
+  .dash-user { display: none !important; }
+  .dash-nav-item {
+    flex-direction: column !important;
+    padding: 10px 12px !important;
+    font-size: 1.2rem !important;
+    flex-shrink: 0 !important;
+    border-left: none !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: var(--r-sm) !important;
+    min-width: 48px !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+  .dash-nav-item.active {
+    border-left: none !important;
+    border-bottom: 2px solid var(--bleu-4) !important;
+    background: rgba(55,138,221,.2) !important;
+  }
+  .dash-nav-item svg { display: none !important; }
+}
