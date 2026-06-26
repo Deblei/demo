@@ -14,16 +14,14 @@ const PageDashVisitor = {
           <div class="dash-name">${App.user.prenom} ${App.user.nom}</div>
           <div class="dash-role">Visiteur</div>
         </div>
-        <nav class="dash-nav">
-          ${[
-            ['favoris','❤️','Mes favoris'],
-            ['historique','🕐','Historique 3D'],
-            ['alertes','🔔','Mes alertes'],
-            ['profil','👤','Mon profil'],
-          ].map(([k,i,l])=>`<div class="dash-nav-item ${this.section===k?'active':''}" onclick="PageDashVisitor.switchSection('${k}')">${i} ${l}</div>`).join('')}
-          <div class="dash-nav-item" onclick="App.goPage('catalogue')">🔍 Chercher un bien</div>
-          <div class="dash-nav-item danger" onclick="App.logout()">${ICO.logout} Déconnexion</div>
-        </nav>
+        ${[
+            ['favoris','❤️','Favoris'],
+            ['historique','🕐','Historique'],
+            ['alertes','🔔','Alertes'],
+            ['profil','👤','Profil'],
+          ].map(([k,i,l])=>`<div class="dash-nav-item ${this.section===k?'active':''}" onclick="PageDashVisitor.switchSection('${k}')">${i} <span class="dash-nav-label">${l}</span></div>`).join('')}
+          <div class="dash-nav-item" onclick="App.goPage('catalogue')">🔍 <span class="dash-nav-label">Catalogue</span></div>
+          <div class="dash-nav-item danger" onclick="App.logout()">${ICO.logout} <span class="dash-nav-label">Déconnexion</span></div>
       </aside>
       <main class="dash-main" id="visitor-main">
         <div class="skeleton" style="height:200px;border-radius:16px"></div>
