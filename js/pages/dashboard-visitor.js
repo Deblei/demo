@@ -8,7 +8,7 @@ const PageDashVisitor = {
     const el = document.getElementById('page-dashboard-visitor');
     el.innerHTML = `
     <div class="dashboard-layout page-with-nav">
-      <aside class="dash-sidebar">
+      <aside class="dash-sidebar" style="display:flex;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;width:100%;height:auto;position:static;padding:8px 10px;gap:4px;background:var(--bleu-1)">
         <div class="dash-user">
           <div class="dash-avatar">${App.user.prenom[0]+App.user.nom[0]}</div>
           <div class="dash-name">${App.user.prenom} ${App.user.nom}</div>
@@ -19,9 +19,17 @@ const PageDashVisitor = {
             ['historique','🕐','Historique'],
             ['alertes','🔔','Alertes'],
             ['profil','👤','Profil'],
-          ].map(([k,i,l])=>`<div class="dash-nav-item ${this.section===k?'active':''}" onclick="PageDashVisitor.switchSection('${k}')">${i} <span class="dash-nav-label">${l}</span></div>`).join('')}
-          <div class="dash-nav-item" onclick="App.goPage('catalogue')">🔍 <span class="dash-nav-label">Catalogue</span></div>
-          <div class="dash-nav-item danger" onclick="App.logout()">${ICO.logout} <span class="dash-nav-label">Déconnexion</span></div>
+          ].map(([k,i,l])=>`
+            <button onclick="PageDashVisitor.switchSection('${k}')" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:none;border-radius:8px;background:${this.section===k?'rgba(55,138,221,.3)':'transparent'};color:${this.section===k?'#fff':'rgba(255,255,255,.65)'};cursor:pointer;border-bottom:2px solid ${this.section===k?'var(--bleu-4)':'transparent'};font-size:.68rem;font-weight:600;min-width:52px">
+              <span style="font-size:1.2rem">${i}</span>
+              <span>${l}</span>
+            </button>`).join('')}
+          <button onclick="App.goPage('catalogue')" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:none;border-radius:8px;background:transparent;color:rgba(255,255,255,.65);cursor:pointer;font-size:.68rem;font-weight:600;min-width:52px">
+            <span style="font-size:1.2rem">🔍</span><span>Chercher</span>
+          </button>
+          <button onclick="App.logout()" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:none;border-radius:8px;background:transparent;color:rgba(226,75,74,.8);cursor:pointer;font-size:.68rem;font-weight:600;min-width:52px">
+            <span style="font-size:1.2rem">🚪</span><span>Exit</span>
+          </button>
       </aside>
       <main class="dash-main" id="visitor-main">
         <div class="skeleton" style="height:200px;border-radius:16px"></div>
