@@ -10,16 +10,61 @@ const PageDashAgent = {
     el.innerHTML = `
     <div class="dashboard-layout page-with-nav">
       <aside class="dash-sidebar">
+        <!-- Avatar + infos agent -->
+        <div class="dash-user">
+          <div class="dash-avatar-wrap">
+            <div class="dash-avatar">${App.user.prenom[0]}${App.user.nom[0]}</div>
+            <div class="dash-online-dot"></div>
+          </div>
+          <div class="dash-name">${App.user.prenom} ${App.user.nom}</div>
+          <div class="dash-role">Agent immobilier</div>
+          ${App.user.agence ? `<div class="dash-agence">${App.user.agence}</div>` : ''}
+        </div>
+
+        <!-- Navigation principale -->
+        <div class="dash-nav-section-label">Menu principal</div>
         ${[
-          ['overview','📊','Accueil'],
-          ['biens','🏠','Biens'],
-          ['leads','👥','Leads'],
-          ['stats','📈','Stats'],
-          ['tarifs','💳','Plans'],
-          ['profil','👤','Profil'],
-        ].map(([k,i,l])=>`<button onclick="PageDashAgent.switchSection('${k}')" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 10px;border:none;border-radius:8px;background:${this.section===k?'rgba(55,138,221,.3)':'transparent'};color:${this.section===k?'#fff':'rgba(255,255,255,.6)'};cursor:pointer;border-bottom:2px solid ${this.section===k?'#378ADD':'transparent'};font-size:.65rem;font-weight:600;min-width:48px"><span style="font-size:1.1rem">${i}</span><span>${l}</span></button>`).join('')}
-        <button onclick="App.goPage('publish')" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 10px;border:none;border-radius:8px;background:transparent;color:rgba(255,255,255,.6);cursor:pointer;font-size:.65rem;font-weight:600;min-width:48px"><span style="font-size:1.1rem">➕</span><span>Publier</span></button>
-        <button onclick="App.logout()" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 10px;border:none;border-radius:8px;background:transparent;color:rgba(226,75,74,.8);cursor:pointer;font-size:.65rem;font-weight:600;min-width:48px"><span style="font-size:1.1rem">🚪</span><span>Exit</span></button>
+          ['overview','📊','Tableau de bord','Vue d'ensemble de vos performances'],
+          ['biens','🏠','Mes biens','Gérer vos annonces'],
+          ['leads','👥','Leads clients','Vos contacts et demandes'],
+          ['stats','📈','Statistiques','Analyses détaillées'],
+        ].map(([k,i,l,desc])=>`
+        <button class="dash-nav-btn ${this.section===k?'active':''}" onclick="PageDashAgent.switchSection('${k}')" title="${desc}">
+          <span class="dash-nav-icon">${i}</span>
+          <span class="dash-nav-text">${l}</span>
+          ${this.section===k ? '<span class="dash-nav-indicator"></span>' : ''}
+        </button>`).join('')}
+
+        <div class="dash-nav-section-label" style="margin-top:8px">Compte</div>
+        ${[
+          ['tarifs','💳','Abonnement','Gérer votre plan'],
+          ['profil','👤','Mon profil','Paramètres du compte'],
+        ].map(([k,i,l,desc])=>`
+        <button class="dash-nav-btn ${this.section===k?'active':''}" onclick="PageDashAgent.switchSection('${k}')" title="${desc}">
+          <span class="dash-nav-icon">${i}</span>
+          <span class="dash-nav-text">${l}</span>
+          ${this.section===k ? '<span class="dash-nav-indicator"></span>' : ''}
+        </button>`).join('')}
+
+        <div class="dash-nav-divider"></div>
+
+        <button class="dash-nav-btn" onclick="App.goPage('publish')">
+          <span class="dash-nav-icon">➕</span>
+          <span class="dash-nav-text">Publier un bien</span>
+        </button>
+        <button class="dash-nav-btn" onclick="App.goPage('catalogue')">
+          <span class="dash-nav-icon">🔍</span>
+          <span class="dash-nav-text">Voir le catalogue</span>
+        </button>
+        <button class="dash-nav-btn danger" onclick="App.logout()">
+          <span class="dash-nav-icon">🚪</span>
+          <span class="dash-nav-text">Déconnexion</span>
+        </button>
+
+        <!-- Badge plan -->
+        <div class="dash-plan-badge">
+          <span>⭐ Plan Premium</span>
+        </div>
       </aside>
       <main class="dash-main" id="agent-main">
         <div class="skeleton" style="height:300px;border-radius:16px"></div>
