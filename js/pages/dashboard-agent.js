@@ -9,7 +9,7 @@ const PageDashAgent = {
     const el = document.getElementById('page-dashboard-agent');
     el.innerHTML = `
     <div class="dashboard-layout page-with-nav">
-      <aside class="dash-sidebar" style="display:flex;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;width:100%;height:auto;position:static;padding:8px 10px;gap:4px;background:var(--bleu-1)">
+      <aside class="dash-sidebar">
         ${[
           ['overview','📊','Accueil'],
           ['biens','🏠','Biens'],
