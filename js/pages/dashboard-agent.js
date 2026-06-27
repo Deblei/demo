@@ -24,10 +24,10 @@ const PageDashAgent = {
         <!-- Navigation principale -->
         <div class="dash-nav-section-label">Menu principal</div>
         ${[
-          ['overview','📊','Tableau de bord','Vue d'ensemble de vos performances'],
-          ['biens','🏠','Mes biens','Gérer vos annonces'],
+          ['overview','📊','Tableau de bord','Vue d\'ensemble de vos performances'],
+          ['biens','🏠','Mes biens','Gerer vos annonces'],
           ['leads','👥','Leads clients','Vos contacts et demandes'],
-          ['stats','📈','Statistiques','Analyses détaillées'],
+          ['stats','📈','Statistiques','Analyses detaillees'],
         ].map(([k,i,l,desc])=>`
         <button class="dash-nav-btn ${this.section===k?'active':''}" onclick="PageDashAgent.switchSection('${k}')" title="${desc}">
           <span class="dash-nav-icon">${i}</span>
@@ -37,8 +37,8 @@ const PageDashAgent = {
 
         <div class="dash-nav-section-label" style="margin-top:8px">Compte</div>
         ${[
-          ['tarifs','💳','Abonnement','Gérer votre plan'],
-          ['profil','👤','Mon profil','Paramètres du compte'],
+          ['tarifs','💳','Abonnement','Gerer votre plan'],
+          ['profil','👤','Mon profil','Parametres du compte'],
         ].map(([k,i,l,desc])=>`
         <button class="dash-nav-btn ${this.section===k?'active':''}" onclick="PageDashAgent.switchSection('${k}')" title="${desc}">
           <span class="dash-nav-icon">${i}</span>
