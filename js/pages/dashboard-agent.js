@@ -10,26 +10,16 @@ const PageDashAgent = {
     el.innerHTML = `
     <div class="dashboard-layout page-with-nav">
       <aside class="dash-sidebar" style="display:flex;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;width:100%;height:auto;position:static;padding:8px 10px;gap:4px;background:var(--bleu-1)">
-        <div class="dash-user">
-          <div class="dash-avatar" style="background:var(--or);color:var(--terre)">${App.user.prenom[0]+App.user.nom[0]}</div>
-          <div class="dash-name">${App.user.prenom} ${App.user.nom}</div>
-          <div class="dash-role" style="color:var(--or)">★ Agent</div>
-          ${App.user.agence ? `<div style="font-size:.75rem;color:var(--gris-3);margin-top:2px">${App.user.agence}</div>` : ''}
-        </div>
-        <nav class="dash-nav">
-          ${[
-            ['overview','📊','Tableau de bord'],
-            ['biens','🏠','Mes biens'],
-            ['leads','👥','Leads'],
-            ['stats','📈','Statistiques'],
-            ['tarifs','💳','Abonnement'],
-            ['profil','👤','Mon profil'],
-          ].map(([k,i,l])=>`<div class="dash-nav-item ${this.section===k?'active':''}" onclick="PageDashAgent.switchSection('${k}')">${i} ${l}</div>`).join('')}
-          <hr style="border:none;border-top:1px solid var(--gris-1);margin:8px 12px">
-          <div class="dash-nav-item" onclick="App.goPage('publish')">${ICO.plus} Publier un bien</div>
-          <div class="dash-nav-item" onclick="App.goPage('catalogue')">🔍 Voir le catalogue</div>
-          <div class="dash-nav-item danger" onclick="App.logout()">${ICO.logout} Déconnexion</div>
-        </nav>
+        ${[
+          ['overview','📊','Accueil'],
+          ['biens','🏠','Biens'],
+          ['leads','👥','Leads'],
+          ['stats','📈','Stats'],
+          ['tarifs','💳','Plans'],
+          ['profil','👤','Profil'],
+        ].map(([k,i,l])=>`<button onclick="PageDashAgent.switchSection('${k}')" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 10px;border:none;border-radius:8px;background:${this.section===k?'rgba(55,138,221,.3)':'transparent'};color:${this.section===k?'#fff':'rgba(255,255,255,.6)'};cursor:pointer;border-bottom:2px solid ${this.section===k?'#378ADD':'transparent'};font-size:.65rem;font-weight:600;min-width:48px"><span style="font-size:1.1rem">${i}</span><span>${l}</span></button>`).join('')}
+        <button onclick="App.goPage('publish')" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 10px;border:none;border-radius:8px;background:transparent;color:rgba(255,255,255,.6);cursor:pointer;font-size:.65rem;font-weight:600;min-width:48px"><span style="font-size:1.1rem">➕</span><span>Publier</span></button>
+        <button onclick="App.logout()" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 10px;border:none;border-radius:8px;background:transparent;color:rgba(226,75,74,.8);cursor:pointer;font-size:.65rem;font-weight:600;min-width:48px"><span style="font-size:1.1rem">🚪</span><span>Exit</span></button>
       </aside>
       <main class="dash-main" id="agent-main">
         <div class="skeleton" style="height:300px;border-radius:16px"></div>
