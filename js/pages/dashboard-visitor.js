@@ -15,21 +15,31 @@ const PageDashVisitor = {
           <div class="dash-role">Visiteur</div>
         </div>
         ${[
-            ['favoris','❤️','Favoris'],
-            ['historique','🕐','Historique'],
-            ['alertes','🔔','Alertes'],
-            ['profil','👤','Profil'],
-          ].map(([k,i,l])=>`
-            <button onclick="PageDashVisitor.switchSection('${k}')" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:none;border-radius:8px;background:${this.section===k?'rgba(55,138,221,.3)':'transparent'};color:${this.section===k?'#fff':'rgba(255,255,255,.65)'};cursor:pointer;border-bottom:2px solid ${this.section===k?'var(--bleu-4)':'transparent'};font-size:.68rem;font-weight:600;min-width:52px">
-              <span style="font-size:1.2rem">${i}</span>
-              <span>${l}</span>
-            </button>`).join('')}
-          <button onclick="App.goPage('catalogue')" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:none;border-radius:8px;background:transparent;color:rgba(255,255,255,.65);cursor:pointer;font-size:.68rem;font-weight:600;min-width:52px">
-            <span style="font-size:1.2rem">🔍</span><span>Chercher</span>
-          </button>
-          <button onclick="App.logout()" style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:none;border-radius:8px;background:transparent;color:rgba(226,75,74,.8);cursor:pointer;font-size:.68rem;font-weight:600;min-width:52px">
-            <span style="font-size:1.2rem">🚪</span><span>Exit</span>
-          </button>
+          ['favoris','❤️','Mes favoris'],
+          ['historique','🕐','Historique 3D'],
+          ['alertes','🔔','Mes alertes'],
+          ['profil','👤','Mon profil'],
+        ].map(([k,i,l])=>`
+        <button class="dash-nav-btn ${this.section===k?'active':''}" onclick="PageDashVisitor.switchSection('${k}')">
+          <span class="dash-nav-icon">${i}</span>
+          <span class="dash-nav-text">${l}</span>
+          ${this.section===k ? '<span class="dash-nav-indicator"></span>' : ''}
+        </button>`).join('')}
+
+        <div class="dash-nav-divider"></div>
+
+        <button class="dash-nav-btn" onclick="App.goPage('catalogue')">
+          <span class="dash-nav-icon">🔍</span>
+          <span class="dash-nav-text">Chercher un bien</span>
+        </button>
+        <button class="dash-nav-btn danger" onclick="App.logout()">
+          <span class="dash-nav-icon">🚪</span>
+          <span class="dash-nav-text">Déconnexion</span>
+        </button>
+
+        <div class="dash-plan-badge">
+          <span>🏠 Compte Visiteur</span>
+        </div>
       </aside>
       <main class="dash-main" id="visitor-main">
         <div class="skeleton" style="height:200px;border-radius:16px"></div>
@@ -40,7 +50,15 @@ const PageDashVisitor = {
 
   async switchSection(s) {
     this.section = s;
-    document.querySelectorAll('.dash-nav-item').forEach(el => el.classList.toggle('active', el.textContent.includes(s==='favoris'?'favoris':s==='historique'?'Historique':s==='alertes'?'alertes':'profil')));
+    document.querySelectorAll('#page-dashboard-visitor .dash-nav-btn').forEach(btn => {
+      const txt = btn.textContent.trim();
+      const isActive =
+        (s==='favoris'    && txt.includes('favoris')) ||
+        (s==='historique' && txt.includes('Historique')) ||
+        (s==='alertes'    && txt.includes('alertes')) ||
+        (s==='profil'     && txt.includes('profil'));
+      btn.classList.toggle('active', isActive);
+    });
     await this._loadSection();
   },
 
