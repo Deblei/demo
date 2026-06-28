@@ -2371,3 +2371,135 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   .hero-dark-stats { gap: 16px !important; }
   .hero-stat-num { font-size: 1.4rem !important; }
 }
+
+/* ═══════════════════════════════════════════════
+   TAB BAR MOBILE — Style app native
+═══════════════════════════════════════════════ */
+
+.mobile-tab-bar {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 64px;
+  background: rgba(5,10,20,.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 0.5px solid rgba(55,138,221,.15);
+  z-index: 500;
+  padding: 0 8px;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tab-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 4px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,.4);
+  cursor: pointer;
+  font-size: .62rem;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  transition: color .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab-btn i {
+  font-size: 20px;
+  transition: transform .15s;
+}
+
+.tab-btn.active {
+  color: #00D4FF;
+}
+
+.tab-btn.active i {
+  transform: translateY(-2px);
+}
+
+.tab-btn:active i {
+  transform: scale(.9);
+}
+
+/* Dashboard background sombre */
+.dashboard-layout {
+  background: #050A14 !important;
+}
+
+.dash-main {
+  background: #07101F !important;
+  padding-bottom: 80px !important;
+}
+
+/* Sidebar fond noir premium */
+.dash-sidebar {
+  background: linear-gradient(180deg, #061428 0%, #050A14 100%) !important;
+  border-right: 0.5px solid rgba(55,138,221,.1) !important;
+}
+
+/* KPI cards sur fond sombre */
+.kpi-card {
+  background: rgba(255,255,255,.04) !important;
+  border: 0.5px solid rgba(255,255,255,.08) !important;
+}
+.kpi-val { color: #fff !important; }
+.kpi-label { color: rgba(255,255,255,.5) !important; }
+.kpi-sub { color: rgba(0,212,255,.8) !important; }
+
+/* Section cards */
+.dash-section {
+  background: rgba(255,255,255,.03) !important;
+  border: 0.5px solid rgba(255,255,255,.07) !important;
+}
+
+/* Bien rows */
+.bien-row {
+  background: rgba(255,255,255,.03) !important;
+  border: 0.5px solid rgba(255,255,255,.07) !important;
+}
+.bien-row:hover {
+  background: rgba(55,138,221,.08) !important;
+  border-color: rgba(55,138,221,.2) !important;
+}
+
+/* Lead cards */
+.lead-card {
+  background: rgba(255,255,255,.03) !important;
+  border: 0.5px solid rgba(255,255,255,.07) !important;
+  border-left: 2px solid rgba(0,212,255,.5) !important;
+}
+
+/* Quick actions */
+.qa-btn {
+  background: rgba(255,255,255,.04) !important;
+  border: 0.5px solid rgba(255,255,255,.08) !important;
+  color: rgba(255,255,255,.7) !important;
+}
+.qa-btn:hover {
+  background: rgba(55,138,221,.12) !important;
+  border-color: rgba(55,138,221,.25) !important;
+  color: #fff !important;
+}
+
+/* Textes dans le dashboard */
+.dash-header h3 { color: #fff !important; }
+.dash-header p { color: rgba(255,255,255,.5) !important; }
+.dash-section-hd h4 { color: #fff !important; }
+
+@media (max-width: 768px) {
+  .mobile-tab-bar {
+    display: flex !important;
+  }
+  /* Cacher la sidebar sur mobile — tab bar prend le relais */
+  .dash-sidebar {
+    display: none !important;
+  }
+  .dash-main {
+    padding-bottom: 80px !important;
+  }
+}
