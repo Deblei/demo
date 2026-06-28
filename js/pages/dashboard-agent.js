@@ -75,15 +75,25 @@ const PageDashAgent = {
 
   async switchSection(s) {
     this.section = s;
-    document.querySelectorAll('#page-dashboard-agent .dash-nav-item').forEach(el => {
-      el.classList.toggle('active',
-        (s==='overview' && el.textContent.includes('Tableau')) ||
-        (s==='biens' && el.textContent.includes('biens')) ||
-        (s==='leads' && el.textContent.includes('Leads')) ||
-        (s==='stats' && el.textContent.includes('Stat')) ||
-        (s==='tarifs' && el.textContent.includes('Abonn')) ||
-        (s==='profil' && el.textContent.includes('profil'))
-      );
+    // Mettre à jour tous les boutons de la sidebar
+    document.querySelectorAll('#page-dashboard-agent .dash-nav-btn').forEach(btn => {
+      const txt = btn.textContent.trim();
+      const isActive =
+        (s==='overview' && txt.includes('Tableau')) ||
+        (s==='biens'    && txt.includes('biens')) ||
+        (s==='leads'    && txt.includes('Leads')) ||
+        (s==='stats'    && txt.includes('Stat')) ||
+        (s==='tarifs'   && txt.includes('Abonn')) ||
+        (s==='profil'   && txt.includes('profil'));
+      btn.classList.toggle('active', isActive);
+      // Mettre à jour l'indicateur (point bleu)
+      const indicator = btn.querySelector('.dash-nav-indicator');
+      if (indicator) indicator.style.display = isActive ? 'block' : 'none';
+      if (isActive && !indicator) {
+        const dot = document.createElement('span');
+        dot.className = 'dash-nav-indicator';
+        btn.appendChild(dot);
+      }
     });
     await this._loadSection();
   },
