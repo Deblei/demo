@@ -2503,3 +2503,79 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     padding-bottom: 80px !important;
   }
 }
+
+/* ── KPI cards textes visibles sur fond sombre ── */
+.kpi-card .kpi-val,
+.kpi-card .kpi-value {
+  color: #ffffff !important;
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+}
+.kpi-card .kpi-label {
+  color: rgba(255,255,255,.55) !important;
+  font-size: .78rem !important;
+}
+.kpi-card .kpi-sub,
+.kpi-card .kpi-change {
+  color: rgba(0,212,255,.8) !important;
+  font-size: .75rem !important;
+  margin-top: 4px !important;
+}
+
+/* ── Dashboard textes généraux ── */
+.dash-main h3,
+.dash-main h4,
+.dash-main .dash-header h3 {
+  color: #ffffff !important;
+}
+.dash-main p,
+.dash-main .dash-header p,
+.dash-section-hd h4 {
+  color: rgba(255,255,255,.55) !important;
+}
+
+/* ── Bien rows textes ── */
+.bien-row-title,
+.bien-row .fw-600 {
+  color: #ffffff !important;
+}
+.bien-row-sub,
+.bien-row div[style*="color:var(--gris"] {
+  color: rgba(255,255,255,.5) !important;
+}
+
+/* ── Lead cards textes ── */
+.lead-name { color: #ffffff !important; }
+.lead-detail, .lead-time { color: rgba(255,255,255,.5) !important; }
+.lead-msg, .lead-info div[style*="italic"] { color: rgba(255,255,255,.45) !important; }
+
+/* ── Navbar sombre quand scrolled ou sur dashboard ── */
+#navbar.scrolled {
+  background: rgba(5,10,20,.97) !important;
+  border-bottom-color: rgba(55,138,221,.15) !important;
+}
+#navbar.scrolled .nav-logo { color: #fff !important; }
+#navbar.scrolled .nav-logo em { color: var(--bleu-5) !important; }
+#navbar.scrolled .nav-link { color: rgba(255,255,255,.7) !important; }
+#navbar.scrolled .nav-link:hover { color: #fff !important; background: rgba(255,255,255,.07) !important; }
+#navbar.scrolled .btn-outline { border-color: rgba(255,255,255,.2) !important; color: rgba(255,255,255,.8) !important; }
+
+/* ── Dash section content ── */
+.dash-section { color: rgba(255,255,255,.8) !important; }
+.empty-state h4 { color: rgba(255,255,255,.8) !important; }
+.empty-state p { color: rgba(255,255,255,.4) !important; }
+
+/* ── Quick actions textes ── */
+.qa-btn span { color: rgba(255,255,255,.7) !important; }
+
+/* ── Bar chart ── */
+.bar-val { color: rgba(255,255,255,.8) !important; }
+.bar-lbl { color: rgba(255,255,255,.4) !important; }
+
+/* ── Pills sur fond sombre ── */
+.pill-green  { background: rgba(29,158,117,.2) !important; color: #4ADE80 !important; }
+.pill-orange { background: rgba(234,179,8,.15) !important; color: #FCD34D !important; }
+.pill-blue   { background: rgba(55,138,221,.2) !important; color: #93C5FD !important; }
+.pill-gray   { background: rgba(255,255,255,.1) !important; color: rgba(255,255,255,.5) !important; }
+.pill-red    { background: rgba(226,75,74,.2) !important; color: #FCA5A5 !important; }
+.pill-cyan   { background: rgba(0,212,255,.15) !important; color: #00D4FF !important; }
