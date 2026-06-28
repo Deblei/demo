@@ -21,7 +21,7 @@ const PageHome = {
             <!-- Badge -->
             <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);border-radius:99px;padding:6px 16px;margin-bottom:32px">
               <span style="width:6px;height:6px;border-radius:50%;background:#00D4FF;animation:pulse-dot 2s infinite"></span>
-              <span style="color:#00D4FF;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Plateforme N°1 en Côte d'Ivoire</span>
+              <span style="color:#00D4FF;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Plateforme N°1 en Côte d\'Ivoire</span>
             </div>
 
             <!-- Titre massif -->
@@ -38,7 +38,7 @@ const PageHome = {
             <!-- CTAs -->
             <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px">
               <button onclick="App.goPage('catalogue')" style="display:flex;align-items:center;gap:10px;padding:14px 28px;background:linear-gradient(135deg,#378ADD,#00D4FF);border:none;border-radius:99px;color:#050A14;font-weight:700;font-size:.95rem;cursor:pointer;box-shadow:0 8px 32px rgba(0,212,255,.3);transition:all .2s" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 40px rgba(0,212,255,.45)'" onmouseleave="this.style.transform='';this.style.boxShadow='0 8px 32px rgba(0,212,255,.3)'">
-                Explorer les biens 3D →
+                Explorer les biens 3D
               </button>
               <button onclick="UI.openAuth('register')" style="display:flex;align-items:center;gap:10px;padding:14px 28px;background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:99px;color:rgba(255,255,255,.8);font-weight:600;font-size:.95rem;cursor:pointer;transition:all .2s" onmouseenter="this.style.borderColor='rgba(255,255,255,.4)';this.style.color='#fff'" onmouseleave="this.style.borderColor='rgba(255,255,255,.15)';this.style.color='rgba(255,255,255,.8)'">
                 Espace agent
@@ -133,11 +133,11 @@ const PageHome = {
             <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(55,138,221,.08) 0%,transparent 70%)"></div>
             <div style="width:60px;height:60px;background:rgba(55,138,221,.1);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:20px;border:1px solid rgba(55,138,221,.2)">🏠</div>
             <h3 style="color:#fff;margin-bottom:10px;font-size:1.3rem">Je cherche un bien</h3>
-            <p style="color:rgba(255,255,255,.5);font-size:.9rem;margin-bottom:24px;line-height:1.7">Explorez des centaines de biens en visite 3D immersive. Filtrez, comparez, contactez l'agent.</p>
+            <p style="color:rgba(255,255,255,.5);font-size:.9rem;margin-bottom:24px;line-height:1.7">Explorez des centaines de biens en visite 3D immersive. Filtrez, comparez, contactez l\'agent.</p>
             <button style="padding:12px 24px;background:linear-gradient(135deg,#185FA5,#378ADD);border:none;border-radius:99px;color:#fff;font-weight:600;font-size:.88rem;cursor:pointer">Voir le catalogue →</button>
           </div>
 
-          <div style="background:linear-gradient(135deg,#061020,#0A1830);border:1px solid rgba(0,212,255,.12);border-radius:24px;padding:40px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(0,212,255,.35)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(0,212,255,.1)'" onmouseleave="this.style.borderColor='rgba(0,212,255,.12)';this.style.transform='';this.style.boxShadow=''" onclick="${App.user?.role==='agent'?'App.goPage('dashboard-agent')':'UI.openAuth('register')'}">
+          <div style="background:linear-gradient(135deg,#061020,#0A1830);border:1px solid rgba(0,212,255,.12);border-radius:24px;padding:40px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(0,212,255,.35)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(0,212,255,.1)'" onmouseleave="this.style.borderColor='rgba(0,212,255,.12)';this.style.transform='';this.style.boxShadow=''" onclick="App.user?.role==='agent'?App.goPage('dashboard-agent'):UI.openAuth('register')">
             <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(0,212,255,.06) 0%,transparent 70%)"></div>
             <div style="width:60px;height:60px;background:rgba(0,212,255,.08);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:20px;border:1px solid rgba(0,212,255,.15)">📋</div>
             <h3 style="color:#fff;margin-bottom:10px;font-size:1.3rem">Je suis agent / propriétaire</h3>
@@ -181,7 +181,7 @@ const PageHome = {
           ${[
             {icon:'🔍',n:'01',t:'Recherchez',p:'Filtrez par quartier, budget et type. Chaque bien a une visite 3D interactive.'},
             {icon:'🥽',n:'02',t:'Visitez en 3D',p:'Naviguez pièce par pièce depuis votre téléphone, comme si vous y étiez réellement.'},
-            {icon:'🤝',n:'03',t:'Contactez',p:'Échangez avec l'agent, planifiez une visio ou une visite physique directement.'},
+            {icon:'🤝',n:'03',t:'Contactez',p:'Échangez avec l\'agent, planifiez une visio ou une visite physique directement.'},
           ].map(s=>`
           <div style="text-align:center;padding:40px 24px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:20px;transition:all .25s" onmouseenter="this.style.borderColor='rgba(0,212,255,.2)';this.style.background='rgba(0,212,255,.03)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.06)';this.style.background='rgba(255,255,255,.02)'">
             <div style="width:56px;height:56px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#00D4FF">${s.n}</div>
@@ -204,9 +204,9 @@ const PageHome = {
         </div>
         <div class="testi-grid">
           ${[
-            {n:'Aminata K.',r:'Diaspora — Paris 🇫🇷',t:'J'ai acheté mon appartement au Plateau sans même venir en Côte d'Ivoire. La visite 3D était tellement réelle !'},
-            {n:'Koffi Adjoumani',r:'Agent — AGEMA Immobilier',t:'Depuis Immo3D CI, nos biens se vendent 2× plus vite. Les clients arrivent déjà convaincus.'},
-            {n:'Fatou Diallo',r:'Acheteuse — Abidjan',t:'Enfin une plateforme qui comprend le marché ivoirien. Simple, belle, et vraiment utile.'},
+            {n:'Aminata K.',r:'Diaspora — Paris 🇫🇷',t:'J\'ai acheté mon appartement au Plateau sans même venir en Côte d\'Ivoire. La visite 3D était tellement réelle !'},
+            {n:'Koffi Adjoumani',r:'Agent — AGEMA Immobilier',t:'Depuis Immo3D CI, nos biens se vendent 2x plus vite. Les clients arrivent deja convaincus.'},
+            {n:'Fatou Diallo',r:'Acheteuse — Abidjan',t:'Enfin une plateforme qui comprend le marche ivoirien. Simple, belle, et vraiment utile.'},
           ].map((t,idx)=>`
           <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:28px;transition:all .25s" onmouseenter="this.style.borderColor='rgba(0,212,255,.2)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.06)';this.style.transform=''">
             <div style="color:#00D4FF;font-size:1.1rem;margin-bottom:14px">★★★★★</div>
@@ -233,12 +233,12 @@ const PageHome = {
               <span style="color:#00D4FF;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Pour les agents</span>
             </div>
             <h2 style="color:#fff;margin-bottom:12px">Publiez avec visite 3D,<br>touchez la diaspora</h2>
-            <p style="color:rgba(255,255,255,.5);max-width:480px;line-height:1.7">1,5 million d'Ivoiriens à l'étranger cherchent à investir à distance.</p>
+            <p style="color:rgba(255,255,255,.5);max-width:480px;line-height:1.7">1,5 million d\'Ivoiriens à l\'étranger cherchent à investir à distance.</p>
             <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
               ${[['Starter','50k'],['Pro','100k'],['Premium','150k']].map(([n,p])=>`<div style="background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.15);border-radius:99px;padding:5px 14px;color:rgba(0,212,255,.8);font-size:.75rem;font-weight:600">${n} · ${p} FCFA/mois</div>`).join('')}
             </div>
           </div>
-          <button onclick="UI.openAuth('register')" style="flex-shrink:0;padding:16px 36px;background:linear-gradient(135deg,#00B8E0,#00D4FF);border:none;border-radius:99px;color:#050A14;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 8px 32px rgba(0,212,255,.3);position:relative;z-index:1;transition:all .2s" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 40px rgba(0,212,255,.45)'" onmouseleave="this.style.transform='';this.style.boxShadow='0 8px 32px rgba(0,212,255,.3)'">Commencer gratuitement →</button>
+          <button onclick="UI.openAuth('register')" style="flex-shrink:0;padding:16px 36px;background:linear-gradient(135deg,#00B8E0,#00D4FF);border:none;border-radius:99px;color:#050A14;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 8px 32px rgba(0,212,255,.3);position:relative;z-index:1;transition:all .2s" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 40px rgba(0,212,255,.45)'" onmouseleave="this.style.transform='';this.style.boxShadow='0 8px 32px rgba(0,212,255,.3)'">Commencer gratuitement</button>
         </div>
       </div>
     </section>`;
@@ -247,16 +247,7 @@ const PageHome = {
     if (!document.getElementById('home-animations')) {
       const style = document.createElement('style');
       style.id = 'home-animations';
-      style.textContent = \`
-        @keyframes float {
-          0%,100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-        }
-        @keyframes bounce {
-          0%,100% { transform: translateX(-50%) translateY(0); }
-          50% { transform: translateX(-50%) translateY(-8px); }
-        }
-      \`;
+      style.textContent = '@keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } } @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-8px); } }';
       document.head.appendChild(style);
     }
 
