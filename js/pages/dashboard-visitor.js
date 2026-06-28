@@ -7,7 +7,7 @@ const PageDashVisitor = {
     if (App.user.role === 'agent') { App.goPage('dashboard-agent'); return; }
     const el = document.getElementById('page-dashboard-visitor');
     el.innerHTML = `
-    <div class="dashboard-layout page-with-nav">
+    <div class="dashboard-layout page-with-nav" style="background:#050A14">
       <aside class="dash-sidebar">
         <div class="dash-user">
           <div class="dash-avatar">${App.user.prenom[0]+App.user.nom[0]}</div>
@@ -42,9 +42,26 @@ const PageDashVisitor = {
         </div>
       </aside>
       <main class="dash-main" id="visitor-main">
-        <div class="skeleton" style="height:200px;border-radius:16px"></div>
+        <div class="skeleton" style="height:200px;border-radius:16px;background:rgba(255,255,255,.05)"></div>
       </main>
-    </div>`;
+    </div>
+    <!-- TAB BAR MOBILE -->
+    <nav class="mobile-tab-bar">
+      ${[
+        ['favoris','ti-heart','Favoris'],
+        ['historique','ti-clock','Historique'],
+        ['alertes','ti-bell','Alertes'],
+        ['profil','ti-user','Profil'],
+      ].map(([k,i,l])=>`
+      <button class="tab-btn ${this.section===k?'active':''}" onclick="PageDashVisitor.switchSection('${k}')">
+        <i class="ti ${i}" aria-hidden="true"></i>
+        <span>${l}</span>
+      </button>`).join('')}
+      <button class="tab-btn" onclick="App.goPage('catalogue')">
+        <i class="ti ti-search" aria-hidden="true"></i>
+        <span>Catalogue</span>
+      </button>
+    </nav>`;
     await this._loadSection();
   },
 
